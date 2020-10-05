@@ -21,5 +21,16 @@ router.get('/',  (req, res) => {
     })
 })
 
+router.get('/:id',(req,res)=>{
+    Issues.find({_id:req.params.id})
+    .then((issue)=>{
+        res.json(issue)
+    })
+    .catch((err)=>{
+        console.log("Not able to find!")
+    })
+})
+
+
 module.exports = router;
 

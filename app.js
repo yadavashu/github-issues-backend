@@ -1,8 +1,12 @@
 const express=require("express")
 const http=require("http")
 const mongoose=require('mongoose')
+const cors=require('cors')
 const CreateIssueRouter=require('./routes/createissue')
-
+const ListIssuesRouter=require('./routes/listissues')
+const DeletIssueRouter=require('./routes/deleteissue')
+const CloseIssueRouter=require('./routes/closeissue')
+const OpenIssueRouter=require('./routes/openissue')
 const portname='localhost'
 const port=8000
 
@@ -16,10 +20,13 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFind
       }
     }
   );
-
+    const app=express();
+    app.use(cors());
   app.use('/create',CreateIssueRouter);
-const app=express();
-
+  app.use('/listissues',ListIssuesRouter);
+  app.use('/closeissue',CloseIssueRouter);
+  app.use('/deleteissue',DeletIssueRouter);
+  app.use('/openissue',OpenIssueRouter);
 
 
 

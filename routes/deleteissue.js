@@ -10,16 +10,14 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
+router.post('/:id',(req,res)=>{
 
-router.post('/', urlencodedParser, (req, res) => {
-    console.log(req.body)
-    Issues.create({
-        issue_desc:req.body.issue_desc
-    })
-    .then((msg)=>{
-        res.status=200
+    Issues.findByIdAndDelete({_id:req.params.id})
+    .then((res)=>{
+        console.log("deleted successfully");
     })
 })
+
 
 module.exports = router;
 

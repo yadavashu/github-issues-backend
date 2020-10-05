@@ -9,17 +9,17 @@ router.use(bodyParser.json());
 var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-
-
-router.post('/', urlencodedParser, (req, res) => {
-    console.log(req.body)
-    Issues.create({
-        issue_desc:req.body.issue_desc
+router.get('/',(req,res)=>{
+    Issues.find({status:true})
+    .then((issue)=>{
+        res.json(issue)
     })
-    .then((msg)=>{
-        res.status=200
+    .catch((err)=>{
+        console.log(err)
     })
 })
+
+
 
 module.exports = router;
 

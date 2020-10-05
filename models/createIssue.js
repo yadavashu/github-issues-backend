@@ -11,5 +11,5 @@ const issueSchema=new mongoose.Schema({
     }
 })
 
-var issues=mongoose.model('issue',issuesSchema)
+var issues=mongoose.model('issue',issueSchema)
 module.exports=issues;
