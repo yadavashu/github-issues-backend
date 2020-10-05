@@ -31,6 +31,26 @@ router.get('/:id',(req,res)=>{
     })
 })
 
+router.get('/open',  (req, res) => {
+    Issues.find({status:true})
+    .then((issue)=>{
+        res.json(issue)
+    })
+    .catch((err)=>{
+        console.log("Not able to find!");
+    })
+})
+
+router.get('/close',  (req, res) => {
+    Issues.find({})
+    .then((issue)=>{
+        res.json(issue)
+    })
+    .catch((err)=>{
+        console.log("Not able to find!");
+    })
+})
+
 
 module.exports = router;
 
