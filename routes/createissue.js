@@ -17,7 +17,8 @@ router.post('/', urlencodedParser, (req, res) => {
         issue_desc:req.body.issue_desc
     })
     .then((msg)=>{
-        res.status=200
+        console.log(msg)
+        res.json(msg)
     })
 })
 
